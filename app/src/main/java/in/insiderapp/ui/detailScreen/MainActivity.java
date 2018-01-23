@@ -1,4 +1,4 @@
-package in.insiderapp;
+package in.insiderapp.ui.detailScreen;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -6,6 +6,9 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import in.insiderapp.R;
+import in.insiderapp.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,10 +38,29 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        init();
+    }
+    
+    private void init(){
+        initFragment();
+        initBottomBar();
+    }
 
-        mTextMessage = (TextView) findViewById(R.id.message);
+    private void initBottomBar(){
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 
+
+    private EventsFragment mEventsFragment;
+
+    private void initFragment() {
+        mEventsFragment = (EventsFragment) getSupportFragmentManager().findFragmentById(R.id
+                .frameLayout);
+        if (mEventsFragment == null) {
+            mEventsFragment = EventsFragment.newInstance();
+            ActivityUtils.showFragment(getSupportFragmentManager(), R.id.frameLayout,
+                    mEventsFragment);
+        }
+    }
 }
