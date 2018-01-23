@@ -1,4 +1,4 @@
-package in.insiderapp.ui.detailScreen;
+package in.insiderapp.ui.homeScreen;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

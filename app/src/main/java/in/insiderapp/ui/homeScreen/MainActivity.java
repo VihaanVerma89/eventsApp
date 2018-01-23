@@ -1,4 +1,4 @@
-package in.insiderapp.ui.detailScreen;
+package in.insiderapp.ui.homeScreen;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         init();
     }
-    
+
     private void init(){
         initFragment();
         initBottomBar();
