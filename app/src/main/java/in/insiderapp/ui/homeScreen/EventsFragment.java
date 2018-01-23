@@ -7,13 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.List;
+
 import in.insiderapp.R;
+import in.insiderapp.network.models.Event;
 
 /**
  * Created by vihaanverma on 23/01/18.
  */
 
-public class EventsFragment extends Fragment {
+public class EventsFragment extends Fragment implements EventsContract.View {
 
     public static EventsFragment newInstance() {
 
@@ -37,5 +40,24 @@ public class EventsFragment extends Fragment {
         return view;
     }
 
+    private EventsContract.Presenter mPresenter;
 
+    @Override
+    public void setPresenter(EventsContract.Presenter presenter) {
+        mPresenter = presenter;
+    }
+
+
+    //    https://api.insider.in/home?norm=1&filterBy=go-out&city=mumbai
+    @Override
+    public void onResume() {
+        super.onResume();
+        mPresenter.getEvents("1", "go-out", "mumbai");
+    }
+
+    @Override
+    public void showEvents(List<Event> events)
+    {
+
+    }
 }

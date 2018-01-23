@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void init(){
         initFragment();
+        initPresenter();
         initBottomBar();
     }
 
@@ -62,5 +63,10 @@ public class MainActivity extends AppCompatActivity {
             ActivityUtils.showFragment(getSupportFragmentManager(), R.id.frameLayout,
                     mEventsFragment);
         }
+    }
+
+    private EventsPresenter mEventPresenter;
+    private void initPresenter(){
+        mEventPresenter = new EventsPresenter(mEventsFragment);
     }
 }
