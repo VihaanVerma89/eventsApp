@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import in.insiderapp.R;
+import in.insiderapp.data.EventsRepository;
 import in.insiderapp.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
@@ -55,6 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     private EventsPresenter mEventPresenter;
     private void initPresenter(){
-        mEventPresenter = new EventsPresenter(mEventsFragment);
+        mEventPresenter = new EventsPresenter(EventsRepository.getInstance(),mEventsFragment);
     }
 }

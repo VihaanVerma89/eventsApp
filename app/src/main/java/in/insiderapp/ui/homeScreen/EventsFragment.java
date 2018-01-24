@@ -129,4 +129,10 @@ public class EventsFragment extends Fragment implements EventsContract.View,
     public void onEventsClicked(int position) {
 
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mPresenter.unsubscribe();
+    }
 }

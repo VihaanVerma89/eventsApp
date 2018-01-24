@@ -5,7 +5,6 @@ import java.util.List;
 import in.insiderapp.network.models.Event;
 import in.insiderapp.ui.BasePresenter;
 import in.insiderapp.ui.BaseView;
-import io.reactivex.Single;
 
 /**
  * Created by vihaanverma on 23/01/18.
@@ -21,6 +20,6 @@ public class EventsContract {
 
     interface Presenter extends BasePresenter {
 
-        Single<List<Event>> getEvents(String norm, String filter, String city);
+        void getEvents(String norm, String filter, String city);
     }
 }
