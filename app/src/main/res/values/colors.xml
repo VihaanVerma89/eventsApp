@@ -6,6 +6,8 @@
 
     <color name="insider1">#FA1118</color>
     <color name="insider2">#F2124C</color>
+    <color name="default_event_color">#b73355</color>
+    <color name="event_image_placeholder">#bce2e2e2</color>
 
 
 </resources>
