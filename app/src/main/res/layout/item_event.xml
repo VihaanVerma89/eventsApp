@@ -40,9 +40,9 @@
             android:layout_marginTop="12dp"
             android:fontFamily="sans-serif-condensed"
             android:singleLine="false"
+            android:textColor="@android:color/black"
             android:text="event asdf  asdafsdf asdfasf a asdfasdf abcd"
             android:textSize="@dimen/event_title_size"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eventIV" />
@@ -79,6 +79,7 @@
             android:fontFamily="sans-serif-condensed"
             android:text="cost"
             android:textSize="@dimen/event_fee_size"
+            android:textColor="@android:color/black"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/eventLocationTV"
             android:layout_marginLeft="8dp" />
