@@ -3,6 +3,7 @@ package in.insiderapp.ui.homeScreen;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.EventLogTags;
@@ -19,8 +20,8 @@ import in.insiderapp.network.models.Event;
  * Created by vihaanverma on 23/01/18.
  */
 
-public class EventsFragment extends Fragment implements EventsContract.View ,
-        EventsAdapter.EventsListener{
+public class EventsFragment extends Fragment implements EventsContract.View,
+        EventsAdapter.EventsListener {
 
     public static EventsFragment newInstance() {
 
@@ -52,10 +53,20 @@ public class EventsFragment extends Fragment implements EventsContract.View ,
 
     private void initViews() {
         initRecyclerView();
+        initSwipeRefreshLayout();
         getEvents();
     }
 
-    private void getEvents(){
+    SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private void initSwipeRefreshLayout() {
+        mSwipeRefreshLayout = getView().findViewById(R.id.swipeRefreshLayout);
+        mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.insider1),
+                getResources().getColor(R.color .insider2));
+        mSwipeRefreshLayout.setOnRefreshListener(() -> getEvents());
+    }
+
+    private void getEvents() {
         //    https://api.insider.in/home?norm=1&filterBy=go-out&city=mumbai
         mPresenter.getEvents("1", "go-out", "mumbai");
     }
@@ -76,6 +87,7 @@ public class EventsFragment extends Fragment implements EventsContract.View ,
     private RecyclerView mEventsRecyclerView;
     private EventsAdapter mEventsAdapter;
     private List<Event> mEvents;
+
     private void initRecyclerView() {
         mEventsRecyclerView = getView().findViewById(R.id.eventsRecyclerView);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
@@ -83,11 +95,11 @@ public class EventsFragment extends Fragment implements EventsContract.View ,
     }
 
     @Override
-    public void showEvents(List<Event> events)
-    {
+    public void showEvents(List<Event> events) {
         mEvents = events;
         mEventsAdapter = new EventsAdapter(getActivity(), this, mEvents);
         mEventsRecyclerView.setAdapter(mEventsAdapter);
+        mSwipeRefreshLayout.setRefreshing(false);
     }
 
     @Override
