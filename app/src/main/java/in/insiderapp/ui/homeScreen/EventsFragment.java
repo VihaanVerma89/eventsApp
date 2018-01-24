@@ -10,6 +10,7 @@ import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.net.SocketException;
@@ -57,6 +58,7 @@ public class EventsFragment extends Fragment implements EventsContract.View,
 
     private void initViews() {
         initRecyclerView();
+        initProgressBar();
         initSwipeRefreshLayout();
         getEvents();
     }
@@ -68,6 +70,11 @@ public class EventsFragment extends Fragment implements EventsContract.View,
         mSwipeRefreshLayout.setColorSchemeColors(getResources().getColor(R.color.insider1),
                 getResources().getColor(R.color .insider2));
         mSwipeRefreshLayout.setOnRefreshListener(() -> getEvents());
+    }
+
+    private ProgressBar mProgressBar;
+    private void initProgressBar(){
+        mProgressBar = getView().findViewById(R.id.progresBar);
     }
 
     private void getEvents() {
@@ -104,10 +111,12 @@ public class EventsFragment extends Fragment implements EventsContract.View,
         mEventsAdapter = new EventsAdapter(getActivity(), this, mEvents);
         mEventsRecyclerView.setAdapter(mEventsAdapter);
         mSwipeRefreshLayout.setRefreshing(false);
+        mProgressBar.setVisibility(View.GONE);
     }
 
     @Override
     public void showError(Throwable throwable) {
+        mProgressBar.setVisibility(View.GONE);
         if (throwable instanceof HttpException) {
             HttpException exception = (HttpException) throwable;
             Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_SHORT).show();
