@@ -3,7 +3,6 @@ package in.insiderapp.ui.homeScreen;
 import java.util.List;
 
 import in.insiderapp.network.models.Event;
-import in.insiderapp.network.models.HomePage;
 import in.insiderapp.ui.BasePresenter;
 import in.insiderapp.ui.BaseView;
 import io.reactivex.Single;
@@ -20,6 +19,6 @@ public class EventsContract {
 
     interface Presenter extends BasePresenter {
 
-        Single<HomePage> getEvents(String norm, String filter, String city);
+        Single<List<Event>> getEvents(String norm, String filter, String city);
     }
 }
