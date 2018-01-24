@@ -10,11 +10,15 @@ import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.util.List;
 
 import in.insiderapp.R;
 import in.insiderapp.network.models.Event;
+import retrofit2.HttpException;
 
 /**
  * Created by vihaanverma on 23/01/18.
@@ -104,7 +108,12 @@ public class EventsFragment extends Fragment implements EventsContract.View,
 
     @Override
     public void showError(Throwable throwable) {
-
+        if (throwable instanceof HttpException) {
+            HttpException exception = (HttpException) throwable;
+            Toast.makeText(getActivity(), exception.getMessage(), Toast.LENGTH_SHORT).show();
+        } else if (throwable instanceof UnknownHostException || throwable instanceof SocketException) {
+            Toast.makeText(getActivity(), "Unable to reach network..", Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override
