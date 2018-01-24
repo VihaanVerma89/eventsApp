@@ -74,7 +74,8 @@ public class EventsPresenter implements EventsContract.Presenter {
         Disposable subscribe = apiClient.getHomePage(norm, filter, city)
                 .subscribeOn(Schedulers.io())
                 .map(homePage -> {
-                    List<String> eventNames = getEventNames(homePage.getList().getGroupwiseList());
+                    List<String> eventNames = homePage.getList().getGroupwiseList().getEvents();
+//                    List<String> eventNames = getEventNames(homePage.getList().getGroupwiseList());
                     JsonObject masterList = homePage.getList().getMasterList();
 
                     List<Event> events = new ArrayList<>();

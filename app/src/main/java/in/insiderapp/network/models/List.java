@@ -13,8 +13,8 @@ public class List {
     private JsonObject masterList;
     @SerializedName("groupwiseList")
     @Expose
-//    private GroupwiseList groupwiseList;
-    private JsonObject groupwiseList;
+    private GroupwiseList groupwiseList;
+//    private JsonObject groupwiseList;
 
     public JsonObject getMasterList() {
         return masterList;
@@ -24,11 +24,11 @@ public class List {
         this.masterList = masterList;
     }
 
-    public JsonObject getGroupwiseList() {
+    public GroupwiseList getGroupwiseList() {
         return groupwiseList;
     }
 
-    public void setGroupwiseList(JsonObject groupwiseList) {
+    public void setGroupwiseList(GroupwiseList groupwiseList) {
         this.groupwiseList = groupwiseList;
     }
 
