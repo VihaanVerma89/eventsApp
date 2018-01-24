@@ -7,6 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="20dp"
     android:background="@drawable/bg_rectangle"
+    android:paddingBottom="@dimen/padding_small"
     >
 
 
@@ -19,6 +20,7 @@
         android:layout_width="match_parent"
         android:adjustViewBounds="true"
         android:scaleType="fitXY"
+        android:layout_margin="1dp"
         />
 
 
@@ -29,8 +31,12 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="event name"
+        android:textSize="@dimen/event_title_size"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventIV"
+        android:fontFamily="sans-serif-condensed"
         android:layout_marginLeft="8dp" />
 
     <TextView
@@ -41,6 +47,7 @@
         android:layout_marginTop="8dp"
         android:text="event time"
         app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="sans-serif-condensed"
         app:layout_constraintTop_toBottomOf="@+id/eventNameTV"
         android:layout_marginLeft="8dp" />
 
@@ -49,8 +56,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="location"
+        android:fontFamily="sans-serif-condensed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventTimeTV"
         android:layout_marginLeft="8dp" />
@@ -61,9 +69,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="cost"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventLocationTV"
-        android:layout_marginLeft="8dp" />
+        android:layout_marginLeft="8dp"
+        android:textSize="@dimen/event_fee_size"/>
 
 
 

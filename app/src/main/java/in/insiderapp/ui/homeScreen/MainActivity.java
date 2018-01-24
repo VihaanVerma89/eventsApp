@@ -12,19 +12,7 @@ import in.insiderapp.utils.ActivityUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-
-            }
-            return false;
-        }
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private void init(){
         initFragment();
         initPresenter();
-        initBottomBar();
     }
 
-    private void initBottomBar(){
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
 
 
     private EventsFragment mEventsFragment;

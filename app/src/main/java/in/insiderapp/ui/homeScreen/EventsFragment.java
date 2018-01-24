@@ -52,6 +52,12 @@ public class EventsFragment extends Fragment implements EventsContract.View ,
 
     private void initViews() {
         initRecyclerView();
+        getEvents();
+    }
+
+    private void getEvents(){
+        //    https://api.insider.in/home?norm=1&filterBy=go-out&city=mumbai
+        mPresenter.getEvents("1", "go-out", "mumbai");
     }
 
     private EventsContract.Presenter mPresenter;
@@ -65,8 +71,6 @@ public class EventsFragment extends Fragment implements EventsContract.View ,
     @Override
     public void onResume() {
         super.onResume();
-        //    https://api.insider.in/home?norm=1&filterBy=go-out&city=mumbai
-        mPresenter.getEvents("1", "go-out", "mumbai");
     }
 
     private RecyclerView mEventsRecyclerView;

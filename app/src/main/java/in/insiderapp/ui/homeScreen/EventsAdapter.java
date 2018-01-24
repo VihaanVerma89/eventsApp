@@ -52,7 +52,16 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
         holder.eventNameTV.setText(event.getName());
         holder.eventTimeTV.setText(event.getVenueDateString());
         holder.eventLocationTV.setText(event.getVenueName());
-        holder.eventFeeTV.setText(event.getPriceDisplayString());
+        if(event.getPriceDisplayString().equalsIgnoreCase("0"))
+        {
+            holder.eventFeeTV.setText("FREE");
+        }
+        else{
+            String price = new StringBuilder(mContext.getString(R.string.ruppee_symbol)).append
+                    (event.getPriceDisplayString()).toString();
+            holder.eventFeeTV.setText(price);
+        }
+
     }
 
 
