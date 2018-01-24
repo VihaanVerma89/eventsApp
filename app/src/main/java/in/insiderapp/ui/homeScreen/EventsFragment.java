@@ -3,6 +3,9 @@ package in.insiderapp.ui.homeScreen;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,7 +19,8 @@ import in.insiderapp.network.models.Event;
  * Created by vihaanverma on 23/01/18.
  */
 
-public class EventsFragment extends Fragment implements EventsContract.View {
+public class EventsFragment extends Fragment implements EventsContract.View ,
+        EventsAdapter.EventsListener{
 
     public static EventsFragment newInstance() {
 
@@ -40,6 +44,16 @@ public class EventsFragment extends Fragment implements EventsContract.View {
         return view;
     }
 
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        initViews();
+    }
+
+    private void initViews() {
+        initRecyclerView();
+    }
+
     private EventsContract.Presenter mPresenter;
 
     @Override
@@ -48,16 +62,37 @@ public class EventsFragment extends Fragment implements EventsContract.View {
     }
 
 
-    //    https://api.insider.in/home?norm=1&filterBy=go-out&city=mumbai
     @Override
     public void onResume() {
         super.onResume();
+        //    https://api.insider.in/home?norm=1&filterBy=go-out&city=mumbai
         mPresenter.getEvents("1", "go-out", "mumbai");
+    }
+
+    private RecyclerView mEventsRecyclerView;
+    private EventsAdapter mEventsAdapter;
+    private List<Event> mEvents;
+    private void initRecyclerView() {
+        mEventsRecyclerView = getView().findViewById(R.id.eventsRecyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        mEventsRecyclerView.setLayoutManager(linearLayoutManager);
     }
 
     @Override
     public void showEvents(List<Event> events)
     {
+        mEvents = events;
+        mEventsAdapter = new EventsAdapter(getActivity(), this, mEvents);
+        mEventsRecyclerView.setAdapter(mEventsAdapter);
+    }
+
+    @Override
+    public void showError(Throwable throwable) {
+
+    }
+
+    @Override
+    public void onEventsClicked(int position) {
 
     }
 }

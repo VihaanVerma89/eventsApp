@@ -15,6 +15,8 @@ public class EventsContract {
     interface View extends BaseView<Presenter> {
 
         void showEvents(List<Event> events);
+
+        void showError(Throwable throwable);
     }
 
     interface Presenter extends BasePresenter {

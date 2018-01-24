@@ -92,9 +92,11 @@ public class EventsPresenter implements EventsContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(events -> {
                             Log.d(TAG, "getEvents: " + events);
+                            mView.showEvents(events);
                         },
                         throwable -> {
                             Log.d(TAG, "getEvents: " + throwable.getMessage());
+                            mView.showError(throwable);
                         });
 
         return null;

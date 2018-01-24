@@ -45,4 +45,5 @@ ext {
     rxandroidVersion = '2.0.1'
 
     retrofitVersion = '2.3.0'
+    glideVersion = '4.3.1'
 }
