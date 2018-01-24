@@ -15,6 +15,8 @@ import java.util.List;
 import in.insiderapp.R;
 import in.insiderapp.network.models.Event;
 
+import static com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade;
+
 /**
  * Created by vihaanverma on 24/01/18.
  */
@@ -47,7 +49,10 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
     public void onBindViewHolder(EventViewHolder holder, int position) {
         Event event = mEvents.get(position);
 
-        Glide.with(mContext).load(event.getHorizontalCoverImage()).into(holder.eventIV);
+        Glide.with(mContext)
+            .load(event.getHorizontalCoverImage())
+            .transition(withCrossFade())
+            .into(holder.eventIV);
 
         holder.eventNameTV.setText(event.getName());
         holder.eventTimeTV.setText(event.getVenueDateString());
