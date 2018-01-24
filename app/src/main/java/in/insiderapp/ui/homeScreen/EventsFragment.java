@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.EventLogTags;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,9 +28,7 @@ public class EventsFragment extends Fragment implements EventsContract.View,
         EventsAdapter.EventsListener {
 
     public static EventsFragment newInstance() {
-
         Bundle args = new Bundle();
-
         EventsFragment fragment = new EventsFragment();
         fragment.setArguments(args);
         return fragment;

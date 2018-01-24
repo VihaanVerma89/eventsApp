@@ -17,9 +17,5 @@
 package in.insiderapp.ui;
 
 public interface BasePresenter {
-
-    void subscribe();
-
     void unsubscribe();
-
 }

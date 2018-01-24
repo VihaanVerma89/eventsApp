@@ -27,11 +27,6 @@ public class EventsPresenter implements EventsContract.Presenter {
     }
 
     @Override
-    public void subscribe() {
-
-    }
-
-    @Override
     public void unsubscribe() {
         mCompositeDisposable.clear();
     }

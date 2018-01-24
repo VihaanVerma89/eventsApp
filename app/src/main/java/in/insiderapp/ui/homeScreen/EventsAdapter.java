@@ -70,12 +70,9 @@ public class EventsAdapter extends RecyclerView.Adapter<EventsAdapter.EventViewH
 
         if(TextUtils.isEmpty(categoryColor))
         {
-//            holder.eventCategoryTV.setBackgroundColor(mContext.getResources().getColor(R.color
-//                    .default_event_color));
             drawable.setColor(mContext.getResources().getColor(R.color.default_event_color));
         }
         else{
-//            holder.eventCategoryTV.setBackgroundColor(Color.parseColor(categoryColor));
             drawable.setColor(Color.parseColor(categoryColor));
         }
         holder.eventCategoryTV.setText(categoryName);

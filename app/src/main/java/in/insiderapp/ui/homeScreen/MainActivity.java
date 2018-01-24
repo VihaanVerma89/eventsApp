@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initToolbar(){
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         ImageView logoIV = findViewById(R.id.logoIV);
